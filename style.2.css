@@ -1,0 +1,156 @@
+header {
+  
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+header img.logo {
+    height: 50px; /* Зміна розміру логотипу */
+   
+}
+
+header img.basket {
+    height: 30px; /* Зміна розміру іконки кошика */
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.footerlogo {
+    margin-right: 20px;
+}
+
+footer img {
+    height: 40px;
+    margin: 0 10px;
+}
+
+footer a {
+    display: inline-block;
+}
+@media (max-width: 600px) {
+    footer {
+        flex-direction: column;
+    }
+
+    .footerlogo {
+        margin-bottom: 10px;
+    }
+
+    footer img {
+        height: 30px;
+        margin: 5px;
+    }
+}
+/* Загальні стилі для корзини */
+.basket2 {
+    border: 1px solid #ddd; /* Світла сірка рамка */
+    padding: 10px; /* Внутрішній відступ */
+    width: 150px; /* Ширина корзини */
+    border-radius: 5px; /* Закруглені кути */
+    background-color: #f9f9f9; /* Легкий фон */
+    text-align: center; /* Центрування тексту */
+    margin-left: 550px;
+}
+
+/* Стилі для ціни */
+.basket2 .prise {
+    font-size: 24px; /* Великий шрифт для ціни */
+    font-weight: bold; /* Жирний текст */
+    color: #333; /* Темно-сірий колір тексту */
+}
+
+/* Стилі для валюти */
+.basket2 .uan {
+    font-size: 14px; /* Менший шрифт для валюти */
+    color: #666; /* Світло-сірий колір тексту */
+}
+
+/* Стилі для порожнього абзацу (можна видалити або використовувати для додаткового контенту) */
+.basket2 .cuma {
+    margin: 5px 0; /* Відступи зверху і знизу */
+}
+a {
+    position: relative;
+    display: inline-block;
+}
+
+.basket {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+}
+
+.count {
+    position: absolute;
+    top: -10px; /* Adjust position as needed */
+    right: -10px; /* Adjust position as needed */
+    background-color: red; /* Adjust color as needed */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+/* Стилі для заголовка */
+h1 {
+    text-align: center; /* Центрування заголовка */
+    color: #333; /* Темно-сірий колір тексту */
+    font-size: 28px; /* Розмір шрифту */
+    margin-bottom: 20px; /* Відступ знизу */
+}
+
+/* Стилі для форми */
+.form {
+    max-width: 500px; /* Максимальна ширина форми */
+    margin: 0 auto; /* Центрування форми */
+    padding: 20px; /* Внутрішні відступи */
+    border: 1px solid #ddd; /* Світла сірка рамка */
+    border-radius: 8px; /* Закруглені кути */
+    background-color: #f9f9f9; /* Легкий фон */
+}
+
+/* Стилі для полів вводу */
+input[type="text"],
+input[type="tel"] {
+    width: calc(100% - 22px); /* Ширина полів, з урахуванням відступів */
+    padding: 10px; /* Внутрішні відступи */
+    margin-bottom: 15px; /* Відступи між полями */
+    border: 1px solid #ccc; /* Легка сірка рамка */
+    border-radius: 4px; /* Закруглені кути */
+    font-size: 16px; /* Розмір шрифту */
+    box-sizing: border-box; /* Включення відступів у загальну ширину */
+}
+
+/* Стилі для радіокнопок */
+input[type="radio"] {
+    margin-right: 10px; /* Відступ праворуч від радіокнопки */
+}
+
+/* Стилі для кнопки відправки */
+input[type="submit"] {
+    background-color: #007bff; /* Синій фон кнопки */
+    color: #fff; /* Білий колір тексту */
+    border: none; /* Без рамки */
+    padding: 10px 20px; /* Внутрішні відступи */
+    border-radius: 4px; /* Закруглені кути */
+    font-size: 16px; /* Розмір шрифту */
+    cursor: pointer; /* Зміна курсору при наведенні */
+    display: block; /* Блоковий елемент */
+    width: 100%; /* Ширина кнопки на всю ширину форми */
+}
+
+/* Стилі для кнопки при наведенні */
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Темніший синій фон при наведенні */
+}

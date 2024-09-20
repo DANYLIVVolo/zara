@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.2.css"/>
+</head>
+<body>
+<header>
+   <a href="index.html" > <img class="logo" src="img/zara-new-20203212 1.png" alt="Logo"> </a>
+    <a href="index2.html">
+        <img class="basket" id="basket-icon" src="img/192-1928302_shopping-basket-icon-free-download-png-basket-svg 1.png" alt="Basket">
+        <div class="count" id="basket-count">0</div>
+    </a>
+</header>
+<main>
+    <h1>Ваш кошик</h1>
+    <div class="basket2">
+        <p class="cuma">Сума замовлення</p>
+        <p class="prise" id="total-price">0</p>
+        <p class="uan">грн</p>
+    </div>
+    <h1>Оформити замовлення</h1>
+    <div class="form">
+        <form id="checkout-form">
+            <input type="text" id="product-name" placeholder="Введіть назву товару"><br>
+            <input type="text" id="customer-name" placeholder="Введіть ім'я"><br>
+            <input type="tel" id="phone-number" placeholder="Введіть номер телефону"><br>
+            <input type="radio" name="delivery" value="nova_poshta"> Нова пошта<br>
+            <input type="radio" name="delivery" value="ukr_poshta"> Укр пошта<br>
+            <input type="submit" value="Надіслати">
+        </form>
+    </div>
+</main>
+<footer>
+    <img class="footerlogo" src="img/zara-new-20203212 1.png" alt="Company Logo">
+    <a href="https://www.youtube.com/yourchannel" target="_blank">
+        <img class="youtube" src="img/brand-youtube 1.png" alt="YouTube">
+    </a>
+    <a href="https://wa.me/yourphonenumber" target="_blank">
+        <img class="whatsapp" src="img/brand-whatsapp 1.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.tiktok.com/@yourprofile" target="_blank">
+        <img class="tiktok" src="img/brand-tiktok 1.png" alt="TikTok">
+    </a>
+</footer>
+<script > 
+    document.addEventListener('DOMContentLoaded', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const basketContainer = document.querySelector('.basket2');
+    const totalPriceElement = document.getElementById('total-price');
+
+    function renderCart() {
+        basketContainer.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name}</p>
+                <p>Ціна: ${item.price} грн</p>
+                <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="quantity-input">
+                <button class="remove-button" data-index="${index}">Видалити</button>
+            `;
+
+            basketContainer.appendChild(itemElement);
+            totalPrice += item.price * item.quantity;
+        });
+
+        totalPriceElement.textContent = totalPrice;
+    }
+
+    function updateTotalPrice() {
+        let totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        totalPriceElement.textContent = totalPrice;
+    }
+
+    // Оновлення кількості товарів
+    basketContainer.addEventListener('input', function(event) {
+        if (event.target.classList.contains('quantity-input')) {
+            const index = event.target.getAttribute('data-index');
+            const newQuantity = parseInt(event.target.value);
+            cart[index].quantity = newQuantity;
+
+            // Оновлюємо дані в localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateTotalPrice();
+        }
+    });
+
+    // Видалення товарів
+    basketContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-button')) {
+            const index = event.target.getAttribute('data-index');
+            cart.splice(index, 1);
+
+            // Оновлюємо дані в localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateTotalPrice();
+        }
+    });
+
+    // Відображаємо товари при завантаженні сторінки
+    renderCart();
+});
+
+</script>
+</body>
+</html>
